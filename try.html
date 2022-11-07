@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sweet corner</title>
+</head>
+<body ng-app="myApp">
+    <nav class="flex mr-16 ml-16 mt-5">
+        <div class="title text-xl flex-1">
+            <img src="/images/logo.png" class="max-h-12" alt="">
+        </div>
+        <div class="menu flex space-x-5 align-middle hidden md:block">
+            <a href="#!fp" class="pr-7 font-medium hover:text-gray-900 hover:underline underline-offset-2 decoration-violet-500 cursor-pointer" >Main</a>
+            <a href="#!sp" class="pr-7 font-medium hover:text-gray-900 hover:underline underline-offset-2 decoration-violet-500 cursor-pointer" >About</a>
+            <a href="#!tp" class="pr-7 font-medium hover:text-gray-900 hover:underline underline-offset-2 decoration-violet-500 cursor-pointer">Products</a>
+            <a href="#!fourp" class="pr-7 font-medium hover:text-gray-900 hover:underline underline-offset-2 decoration-violet-500 cursor-pointer">Contact Us</a>
+        </div>
+    </nav>
+    
+<!-- <p class="pr-7 font-medium hover:text-gray-900 hover:underline underline-offset-2 decoration-violet-500 cursor-pointer">Click on the Navigation.</p> -->
+
+<!-- <p>Note that each "view" has its own controller which each gives the "msg" variable a value.</p> -->
+
+<div ng-view></div>
+
+
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "fp.html",
+        controller : "fpCtrl"
+    })
+    .when("/fp", {
+        templateUrl : "fp.html",
+        controller : "fpCtrl"
+    })
+    .when("/sp", {
+        templateUrl : "sp.html",
+        controller : "spCtrl"
+    })
+    .when("/tp", {
+        templateUrl : "tp.html",
+        controller : "tpCtrl"
+    })
+    .when("/fourp", {
+        templateUrl : "fourp.html",
+        controller : "fourpCtrl"
+    });
+});
+app.controller("spCtrl", function ( ) {
+    $scope.msg = "I love sweets";
+});
+app.controller("tpCtrl", function ($scope) {
+    $scope.products = [{
+        name : "Rabdi",
+        image :"/images1/rabdi.png",
+        description :"Made with fresh milk",
+        price :"Rs 500",
+        quantity :"200 gm"
+
+    },{
+        name : "Pedha",
+        image :"/images1/pedha.png",
+        description :"Freshness of kesar",
+        price :"Rs 200",
+        quantity :"300 gm"
+
+    }
+    ,{
+        name : "Mysoor Pedha",
+        image :"/images1/mysoor.png",
+        description :"Sugar free",
+        price :"Rs 250",
+        quantity :"300 gm"
+
+    }
+    ,{
+        name : "Kaju Katli",
+        image :"/images1/kaju.png",
+        description :"Has pure silver covering",
+        price :"Rs 400",
+        quantity :"3"
+
+    }
+    ,{
+        name : "Jalebi",
+        image :"/images1/jalebi.png",
+        description :"Soaked in sugar syrup. ",
+        price :"Rs 170",
+        quantity :"250 gm"
+
+    }
+    ,{
+        name : "Rasmalai",
+        image :"/images1/rasmalai.png",
+        description :"Made with fresh milk",
+        price :"Rs 500",
+        quantity :"300 gm"
+
+    }
+]
+});
+
+</script>
+
+</body>
+</html>
